@@ -36,14 +36,23 @@
 
 **Progress this week**
 - Set up repository from the FURP template.
-- _..._
+# Weekly Log - Week 1
+
+## Week 1 (June 8 - June 14）
+
+//I have just learned cpp and ROS2 since April...
+-recap what I've learned before (basic knowledge including cpp and ROS2)
+-learn basic theories of WBC 
+-understand how to use QP and RL in WBC
+
 
 **Challenges & blockers**
 - _..._
 
 **Next steps**
-- _..._
+//I have to say that learn these basic knowledges really take time >^<, but I'll try my best
+-read latest papers and discover a thought-provoking direction
 
-**Hours spent (optional):**
+**Hours spent (optional):8h/day**
 
 **Links (optional):**
