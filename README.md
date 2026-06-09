@@ -25,7 +25,7 @@ This is your project home for the FURP programme. **Fork this template**, rename
 
 | Field | Your entry |
 |---|---|
-| Student name(s) | _e.g. Jason Zhang_ |
+| Student name(s) | _Wenxin YI_ |
 | Project title | _..._ |
 | Project tag | _e.g. ROSBootcamp_ |
 | Track | Research |
