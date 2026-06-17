@@ -56,3 +56,25 @@
 **Hours spent (optional):8h/day**
 
 **Links (optional):**
+
+
+### Week 2 — 2026/06/15
+
+**Attended this week's meeting:** Yes 
+
+**Progress this week**
+- _computation graph_
+- _create simple topics with the aid of AI_
+- ///I've to say using AI to help generating the source file significantly reduce errors......
+- quick glance of python(ensuring I roughly understand the source files)
+
+**Challenges & blockers**
+- _find that I've install ubuntu of a wrong version(20.10&foxy) and install a new one(22.04+humble)_
+- 
+
+**Next steps**
+- _What will you do next week?_
+
+**Hours spent (optional):** _6-8h/day_
+
+**Links (optional):** _ROS2 科研训练营 handbook_
