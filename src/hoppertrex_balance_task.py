@@ -39,9 +39,7 @@ LEG_INIT_JOINT_POS = {
 }
 
 
-# ============================================================
-# 辅助奖励/惩罚函数
-# ============================================================
+
 def lin_vel_z_l2(env: ManagerBasedRlEnv) -> torch.Tensor:
     robot = env.scene["robot"]
     return torch.square(robot.data.root_link_lin_vel_b[:, 2])
@@ -108,7 +106,6 @@ def yaw_vel_penalty(env: ManagerBasedRlEnv) -> torch.Tensor:
 
 
 def pitch_angle_penalty(env: ManagerBasedRlEnv) -> torch.Tensor:
-    """计算基座的俯仰角（Pitch），并返回其平方作为惩罚"""
     robot = env.scene["robot"]
     quat = robot.data.root_link_quat_w
     qw, qx, qy, qz = quat[:, 0], quat[:, 1], quat[:, 2], quat[:, 3]
@@ -117,7 +114,6 @@ def pitch_angle_penalty(env: ManagerBasedRlEnv) -> torch.Tensor:
 
 
 def base_lin_vel_l2(env: ManagerBasedRlEnv) -> torch.Tensor:
-    """惩罚水平速度（平方和）"""
     robot = env.scene["robot"]
     vel_xy = robot.data.root_link_lin_vel_b[:, :2]
     return torch.sum(torch.square(vel_xy), dim=1)
@@ -130,9 +126,6 @@ def position_xy_penalty(env: ManagerBasedRlEnv) -> torch.Tensor:
     return torch.sum(torch.square(pos_xy), dim=1)
 
 
-# ============================================================
-# 环境创建函数
-# ============================================================
 def create_hoppertrex_balance_env(play: bool = True):
     import torch
     from mjlab.envs.manager_based_rl_env import ManagerBasedRlEnv
@@ -148,9 +141,6 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
     robot_cfg = get_hoppertrex_robot_cfg()
     num_envs = 16 if play else 64
 
-    # ----------------------------------------------------------
-    # 观测定义
-    # ----------------------------------------------------------
     observations = {
         "actor": ObservationGroupCfg(
             terms={
@@ -200,9 +190,7 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
         ),
     }
 
-    # ----------------------------------------------------------
-    # 动作定义
-    # ----------------------------------------------------------
+
     actions = {
 
     "leg_pos": JointPositionActionCfg(
@@ -226,9 +214,6 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
 
     }
 
-    # ----------------------------------------------------------
-    # 命令（恒零，因为是平衡任务）
-    # ----------------------------------------------------------
     commands = {
         "twist": UniformVelocityCommandCfg(
             entity_name="robot",
@@ -246,9 +231,7 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
         )
     }
 
-    # ----------------------------------------------------------
-    # 奖励（简洁、干净、平衡导向）
-    # ----------------------------------------------------------
+
     rewards = {
 
 
@@ -323,9 +306,7 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
 ),
 
     }
-    # ----------------------------------------------------------
-    # 终止条件
-    # ----------------------------------------------------------
+
     terminations={
 
     "time_out":
@@ -370,10 +351,7 @@ def make_hoppertrex_balance_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
 
     }
 
-    
-    # ----------------------------------------------------------
-    # 场景配置
-    # ----------------------------------------------------------
+
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             num_envs=num_envs,
