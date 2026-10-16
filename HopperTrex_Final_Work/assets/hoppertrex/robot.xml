@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<mujoco model="hoppertrex">
+  <compiler angle="radian" meshdir="." autolimits="true"/>
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+    </default>
+    <default class="collision">
+      <geom contype="1" conaffinity="1" condim="3" group="3" friction="0.8 0.003 0.0001" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+    </default>
+    <default class="wheel_collision">
+      <geom contype="1" conaffinity="1" condim="6" group="3" friction="1.6 0.02 0.002" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="chassis_base" content_type="model/stl" file="meshes/chassis_base.stl"/>
+    <mesh name="thigh_left" content_type="model/stl" file="meshes/thigh_left.stl"/>
+    <mesh name="calf_left" content_type="model/stl" file="meshes/calf_left.stl"/>
+    <mesh name="wheel" content_type="model/stl" file="meshes/wheel.stl"/>
+    <mesh name="thigh_right" content_type="model/stl" file="meshes/thigh_right.stl"/>
+    <mesh name="calf_right" content_type="model/stl" file="meshes/calf_right.stl"/>
+  </asset>
+  <worldbody>
+    <body name="chassis_base">
+      <inertial pos="0.055895412145747870591 0.12657096212450411055 0.15318659611809870569" mass="5.8727148917171856368" diaginertia="0.0883099177066 0.14982418413 0.178825897519"/>
+      <freejoint name="floating_base_joint"/>
+      <geom pos="0.290098 0.108904 -0.0125122" quat="1 0 0 0" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="chassis_base" name="chassis_base_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+      <body name="thigh_left" pos="0.0804982 0.289876 0" quat="0 0 -0.707107 0.707107">
+        <inertial pos="0.0927701 0.0928165 -0.00521573" quat="0.664036 0.266895 -0.642286 0.274394" mass="2.02414" diaginertia="0.0168407 0.0162625 0.00141807"/>
+        <joint name="thigh_left_01" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-97 97" range="-2.443 0.698" limited="true"/>
+        <geom pos="0 0 -0.000380475" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="thigh_left" name="thigh_left_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+        <body name="calf_left" pos="0.141407 0.141436 -0.038" quat="0.707107 0 0 0.707107">
+          <inertial pos="0.000646118 0.162428 -0.019213" quat="0.523795 0.476934 -0.463829 0.532011" mass="1.40106" diaginertia="0.00960709 0.00905314 0.00106096"/>
+          <joint name="knee_left" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-97 97" range="-0.698 2.094" limited="true"/>
+          <geom pos="0.199726 -0.0104672 0.0376195" quat="0.54853 0.54853 -0.446223 -0.446223" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="calf_left" name="calf_left_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+          <body name="wheel" pos="0 0.2 -0.04925" quat="0.707107 0 0 -0.707107">
+            <inertial pos="0.000105473 -7.52128e-05 0.0138404" quat="0.628379 0.323781 -0.628641 0.324216" mass="2.02299" diaginertia="0.01291 0.00667058 0.0066568"/>
+            <joint name="wheel_left" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-5.8 5.8"/>
+            <geom pos="0.0168177 0.0487336 0.0549063" quat="0.5 0.5 0.5 -0.5" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="wheel" name="wheel_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+            <geom name="wheel_left_collision" type="cylinder" pos="0.000105 -0.000075 0.01384" size="0.100 0.018" class="wheel_collision"/>
+          </body>
+          <geom name="calf_left_collision" type="capsule" fromto="0 0 0 0 0.18 0" size="0.026" class="collision"/>
+        </body>
+        <geom name="thigh_left_collision" type="capsule" fromto="0 0 0 0.16 0.16 0" size="0.028" class="collision"/>
+      </body>
+      <body name="thigh_right" pos="0.0804985 -0.040124 0" quat="0 0 0.707107 0.707107">
+        <inertial pos="0.0928881 -0.0926983 -0.00521573" quat="0.266486 0.66421 -0.273971 0.642456" mass="2.02414" diaginertia="0.0168407 0.0162625 0.00141807"/>
+        <joint name="thigh_right_01" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-97 97" range="-0.698 2.443" limited="true"/>
+        <geom pos="0 0 -0.000380475" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="thigh_right" name="thigh_right_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+        <body name="calf_right" pos="0.141586 -0.141256 -0.038" quat="0.707107 0 0 -0.707107">
+          <inertial pos="0.000645393 -0.162426 -0.019213" quat="0.476935 0.523803 -0.532007 0.463823" mass="1.40106" diaginertia="0.00960687 0.00905285 0.00106101"/>
+          <joint name="knee_right" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-97 97" range="-2.094 0.698" limited="true"/>
+          <geom pos="0.2 0 0.0376195" quat="0.548619 0.548619 0.446114 0.446114" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="calf_right" name="calf_right_visual" class="visual" contype="0" conaffinity="0" group="2"/>
+          <body name="wheel_2" pos="0 -0.2 -0.04925" quat="0.707107 0 0 0.707107">
+            <inertial pos="0.000105473 -7.52128e-05 0.0138404" quat="0.628379 0.323781 -0.628641 0.324216" mass="2.02299" diaginertia="0.01291 0.00667058 0.0066568"/>
+            <joint name="wheel_right" pos="0 0 0" axis="0 0 1" actuatorfrcrange="-5.8 5.8"/>
+            <geom pos="0.0168177 0.0487336 0.0549063" quat="0.5 0.5 0.5 -0.5" type="mesh" rgba="0.74902 0.74902 0.74902 1" mesh="wheel" name="wheel_visual_2" class="visual" contype="0" conaffinity="0" group="2"/>
+            <geom name="wheel_right_collision" type="cylinder" pos="0.000105 -0.000075 0.01384" size="0.100 0.018" class="wheel_collision"/>
+          </body>
+          <geom name="calf_right_collision" type="capsule" fromto="0 0 0 0 0.18 0" size="0.026" class="collision"/>
+        </body>
+        <geom name="thigh_right_collision" type="capsule" fromto="0 0 0 0.16 0.16 0" size="0.028" class="collision"/>
+      </body>
+      <geom name="chassis_base_collision" type="box" pos="0.055 0.126 0.153" size="0.18 0.16 0.08" class="collision"/>
+    </body>
+  </worldbody>
+</mujoco>

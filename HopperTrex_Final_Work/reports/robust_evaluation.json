@@ -1,0 +1,11 @@
+{
+  "stage": "stairs",
+  "stair_height_m": 0.02,
+  "push_training": true,
+  "episodes": 10,
+  "passed": 9,
+  "mean_seconds": 4.006,
+  "push_force_N": [8.0, 18.0],
+  "push_interval_control_steps": [100, 300],
+  "note": "Independent rollout with random one-control-interval impulses enabled."
+}

@@ -1,0 +1,18 @@
+{
+  "document_id": "eba1be29ba3a0caf3e640bd9",
+  "workspace_id": "f954e7178f5bf956382f7efa",
+  "assembly_name": "HopperTrex",
+  "robot_name": "hoppertrex",
+  "draw_frames": false,
+  "draw_collisions": false,
+  "use_fixed_links": false,
+  "configuration": "default",
+  "ignore_limits": false,
+  "joint_max_effort": 97.0,
+  "joint_max_velocity": 29.321531433504735,
+  "no_dynamics": false,
+  "simplify_stls": false,
+  "use_collisions_configurations": true,
+  "package_name": "",
+  "add_dummy_base_link": false
+}

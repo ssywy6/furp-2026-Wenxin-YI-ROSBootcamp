@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "eba1be29ba3a0caf3e640bd9",
+    "documentMicroversion": "470b5838bda8efb3e6f48f4f",
+    "elementId": "7445481823ad0a6ead6c0e79",
+    "fullConfiguration": "default",
+    "id": "MsN04TP+frwjMFV+3",
+    "isStandardContent": false,
+    "name": "chassis_base <1>",
+    "partId": "JFD",
+    "suppressed": false,
+    "type": "Part"
+}
